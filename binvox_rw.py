@@ -186,9 +186,9 @@ def read_as_coord_array(fp, fix_coords=True):
     # according to docs,
     # index = x * wxh + z * width + y; // wxh = width * height = d * d
 
-    x = nz_voxels / (dims[0]*dims[1])
+    x = nz_voxels // (dims[0]*dims[1])
     zwpy = nz_voxels % (dims[0]*dims[1]) # z*w + y
-    z = zwpy / dims[0]
+    z = zwpy // dims[0]
     y = zwpy % dims[0]
     if fix_coords:
         data = np.vstack((x, y, z))
